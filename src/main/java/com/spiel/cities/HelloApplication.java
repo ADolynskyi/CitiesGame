@@ -37,6 +37,7 @@ public class HelloApplication extends Application {
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
 
+
         if(alert.showAndWait().get()== ButtonType.OK){
             System.out.println("you are exited");
             stage.close();

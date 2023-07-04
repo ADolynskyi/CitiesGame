@@ -6,19 +6,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.spiel.cities.MainWindowController">
-   <TextField id="inputText" layoutX="42.0" layoutY="114.0"/>
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.spiel.cities.MainWindowController">
+   <TextField fx:id="inputField" layoutX="42.0" layoutY="114.0" />
    <Label layoutX="227.0" layoutY="113.0" text="Введіть назву міста">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Label>
-   <Button id="makeMoveButton" layoutX="43.0" layoutY="158.0" mnemonicParsing="false" prefHeight="26.0"
-           prefWidth="150.0" text="Зробити хід">
+   <Button id="makeMoveButton" layoutX="43.0" layoutY="158.0" mnemonicParsing="false" onAction="#makeMove" prefHeight="26.0" prefWidth="150.0" text="Зробити хід">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
-   <Label id="answerText" layoutX="220.0" layoutY="163.0" text="Label"/>
+   <Label fx:id="answerLabel" layoutX="220.0" layoutY="163.0" text="Label" />
 </AnchorPane>
