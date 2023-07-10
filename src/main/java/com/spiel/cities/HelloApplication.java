@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.Optional;
 
 
 public class HelloApplication extends Application {
@@ -30,7 +31,7 @@ public class HelloApplication extends Application {
         mainWindowLoader= createMainWindowLoader();
 
             }
-    @SuppressWarnings("OptionalGetWithoutIsPresent")
+
     public void logout(Stage stage){
         Image icon = new Image("city.png");
         Alert alert =new Alert(Alert.AlertType.CONFIRMATION);
@@ -39,8 +40,8 @@ public class HelloApplication extends Application {
         alert.setContentText("Ви впевнені, що хочете покинути гру");
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
-        if(alert.showAndWait().get()== ButtonType.OK){
-            System.out.println("you are exited");
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if(buttonType.isPresent() && buttonType.get()== ButtonType.OK){
             stage.close();
         }
     }
