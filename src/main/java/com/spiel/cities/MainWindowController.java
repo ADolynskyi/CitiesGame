@@ -5,28 +5,43 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class MainWindowController {
-    public void setAnswerText(String answerText) {
-        this.answerLabel.setText(answerText);
-    }
     @FXML
     private Label answerLabel;
 
+
+
     @FXML
     private TextField inputField;
-    public String getInputText() {
-        return inputField.getText();
-    }
+    private Game game= new Game();
+
     @FXML
     protected void makeMove(){
-       //тут має бути виклик методу хід (Здається це в тебе turn)
-        //наступний рядок для демонстрації роботи, видалити
-        setAnswerText(getInputText());
-        //Cleaning text field for next input
+        if(inputField.getText().equals("")){
+            answerLabel.setText("Введіть місто");
+        }else if(inputField.getText().equals("Здаюсь")){
+            ////виклик методу привітання
+            answerLabel.setText("Комп'ютер вигравз рахунком "+game.getScore()+" бали" );
+            game=new Game();
+            }else {
+                   String turnResult= game.turn(inputField.getText());
+                   if (turnResult.equals("city")) {
+                       game.setScore(game.getScore()+1);
+                       String cityFromAI=game.turnAI();
+                            if (cityFromAI!=null) {
+                                answerLabel.setText(cityFromAI);
+                                inputField.setText("");
+                                }else {
+                                //виклик методу привітання
+                                answerLabel.setText("Ви виграли з рахунком "+game.getScore()+" бали" );
+                                game=new Game();
+                            }
+                   }else {
+                       answerLabel.setText(turnResult);
+                   }
+            }
         inputField.setText("");
+
     }
-
-
-
 
 
 }

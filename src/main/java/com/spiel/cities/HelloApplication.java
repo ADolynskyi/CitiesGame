@@ -13,6 +13,7 @@ import java.util.Objects;
 
 
 public class HelloApplication extends Application {
+     static FXMLLoader mainWindowLoader;
     @Override
     public void start(Stage stage) throws IOException {
         Parent root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
@@ -26,7 +27,9 @@ public class HelloApplication extends Application {
             event.consume();
             logout(stage);
         });
-    }
+        mainWindowLoader= createMainWindowLoader();
+
+            }
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     public void logout(Stage stage){
         Image icon = new Image("city.png");
@@ -36,12 +39,16 @@ public class HelloApplication extends Application {
         alert.setContentText("Ви впевнені, що хочете покинути гру");
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
-
-
         if(alert.showAndWait().get()== ButtonType.OK){
             System.out.println("you are exited");
             stage.close();
         }
+    }
+    private FXMLLoader createMainWindowLoader(){
+        return new FXMLLoader(Objects.requireNonNull(getClass().getResource("main-window.fxml")));
+    }
+    public static FXMLLoader getMainWindowLoader() {
+        return mainWindowLoader;
     }
 
     public static void main(String[] args) {
