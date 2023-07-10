@@ -16,7 +16,9 @@ public class HelloController {
 
     @FXML
     protected void onOkButtonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main-window.fxml")));
+       // Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main-window.fxml")));
+        Parent root= HelloApplication.getMainWindowLoader().load();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene((root));
         stage.setTitle("Міста");
