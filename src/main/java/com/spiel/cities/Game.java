@@ -5,12 +5,15 @@ public class Game {
     private City currentCity = null;
 
     public Game() {
-        dataSet.add(new City("Kyiv"));
-        dataSet.add(new City("Dnipro"));
-        dataSet.add(new City("Lviv"));
-        dataSet.add(new City("Vinnitsya"));
-        dataSet.add(new City("Antverpen"));
-        dataSet.add(new City("Nikolaev"));
+        dataSet.add(new City("Київ"));
+        dataSet.add(new City("Дніпро"));
+        dataSet.add(new City("Львів"));
+        dataSet.add(new City("Вінниця"));
+        dataSet.add(new City("Антверпен"));
+        dataSet.add(new City("Миколаїв"));
+        dataSet.add(new City("Вільнюс"));
+        dataSet.add(new City("Нетішин"));
+        dataSet.add(new City("Ялта"));
     }
 
     public String turn(String value) {
