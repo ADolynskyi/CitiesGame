@@ -1,19 +1,15 @@
 package com.spiel.cities;
+
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Game {
     private final DataSet dataSet = new DataSet();
     private int score = 0;
     private City currentCity = null;
 
     public Game() {
-        dataSet.add(new City("Київ"));
-        dataSet.add(new City("Дніпро"));
-        dataSet.add(new City("Львів"));
-        dataSet.add(new City("Вінниця"));
-        dataSet.add(new City("Антверпен"));
-        dataSet.add(new City("Миколаїв"));
-        dataSet.add(new City("Вільнюс"));
-        dataSet.add(new City("Нетішин"));
-        dataSet.add(new City("Ялта"));
+        readNamesToSet(dataSet);
     }
 
     public String turn(String value) {
@@ -62,5 +58,26 @@ public class Game {
         this.score = score;
     }
 
+    public  void readNamesToSet(DataSet dataSet){
+        try (FileReader reader = new FileReader("src/main/resources/CityNames.txt")) {
+            StringBuilder word =new StringBuilder();
+            int c;
+            while ((c = reader.read()) != -1) {
+                //System.out.println((char)c);
+                if(c==13){
+                    continue;
+                } else if (c==10) {
+                    City city =new City(word.toString());
+                    dataSet.add(city);
+                    word=new StringBuilder();
+                }else {
+                    word.append((char)c);
+                }
+
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
 

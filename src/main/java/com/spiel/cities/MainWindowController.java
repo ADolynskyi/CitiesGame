@@ -13,8 +13,6 @@ import java.util.Optional;
 public class MainWindowController {
     @FXML
     private Label answerLabel;
-
-
     @FXML
     private TextField inputField;
     private Game game = new Game();
@@ -24,7 +22,6 @@ public class MainWindowController {
         if (inputField.getText().equals("")) {
             answerLabel.setText("Введіть місто");
         } else if (inputField.getText().equals("Здаюсь")) {
-            ////виклик методу привітання
             Stage stage = (Stage) inputField.getScene().getWindow();
             greeting(stage, "Комп'ютер виграв", game.getScore());
         } else {
@@ -36,7 +33,6 @@ public class MainWindowController {
                     answerLabel.setText(cityFromAI);
                     inputField.setText("");
                 } else {
-                    //виклик методу привітання
                     Stage stage = (Stage) inputField.getScene().getWindow();
                     greeting(stage, "Ви виграли", game.getScore());
                 }
@@ -52,7 +48,7 @@ public class MainWindowController {
         Image icon = new Image("city.png");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Чудова гра");
-        alert.setHeaderText(result + ", з рахунком в " + score + "бали");
+        alert.setHeaderText(result + ", з рахунком в " + score + " бали(ів)");
         alert.setContentText("Бажаєте зіграти ще?");
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
