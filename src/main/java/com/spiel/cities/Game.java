@@ -65,13 +65,14 @@ public class Game {
             StringBuilder word = new StringBuilder();
             int c;
             while ((c = reader.read()) != -1) {
-                if (c == 13) {
-                } else if (c == 10) {
-                    City city = new City(word.toString());
-                    dataSet.add(city);
-                    word = new StringBuilder();
-                } else {
-                    word.append((char) c);
+                if (c != 13) {
+                    if (c == 10) {
+                        City city = new City(word.toString());
+                        dataSet.add(city);
+                        word = new StringBuilder();
+                    } else {
+                        word.append((char) c);
+                    }
                 }
             }
         } catch (IOException e) {
