@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Game {
+    public static final String SUCCESS_VALUE = "city";
+    public static final String SURRENDER_VALUE = "Здаюсь";
     private final DataSet dataSet = new DataSet();
     private int score = 0;
     private City currentCity = null;
@@ -18,12 +20,12 @@ public class Game {
                 if (currentCity == null) {
                     dataSet.use(value);
                     currentCity = new City(value);
-                    return "city";
+                    return SUCCESS_VALUE;
                 } else {
                     if (currentCity.lastChar() == value.toLowerCase().charAt(0)) {
                         dataSet.use(value);
                         currentCity = new City(value);
-                        return "city";
+                        return SUCCESS_VALUE;
                     } else {
 
                         return "Місто не відповідає умові гри";
@@ -33,7 +35,7 @@ public class Game {
 
                 return "Місто вже використовувалось";
             }
-        } else  {
+        } else {
 
             return "А таке місто точно існує? Я його не знаю";
         }
@@ -43,10 +45,10 @@ public class Game {
     public String turnAI() {
         char lastChar = currentCity.lastChar();
         currentCity = dataSet.findAITurn(lastChar);
-        if(currentCity!=null) {
+        if (currentCity != null) {
             return currentCity.toString();
-        }else {
-          return null;
+        } else {
+            return null;
         }
     }
 
@@ -58,20 +60,20 @@ public class Game {
         this.score = score;
     }
 
-    public  void readNamesToSet(DataSet dataSet){
+    public void readNamesToSet(DataSet dataSet) {
         try (FileReader reader = new FileReader("src/main/resources/CityNames.txt")) {
-            StringBuilder word =new StringBuilder();
+            StringBuilder word = new StringBuilder();
             int c;
             while ((c = reader.read()) != -1) {
                 //System.out.println((char)c);
-                if(c==13){
+                if (c == 13) {
                     continue;
-                } else if (c==10) {
-                    City city =new City(word.toString());
+                } else if (c == 10) {
+                    City city = new City(word.toString());
                     dataSet.add(city);
-                    word=new StringBuilder();
-                }else {
-                    word.append((char)c);
+                    word = new StringBuilder();
+                } else {
+                    word.append((char) c);
                 }
 
             }

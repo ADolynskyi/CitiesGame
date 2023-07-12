@@ -11,6 +11,7 @@ public class City {
     public String toString() {
         return name;
     }
+
     @Override
     public int hashCode() {
         return name.toLowerCase().hashCode();
@@ -28,6 +29,7 @@ public class City {
     public char lastChar() {
         return name.toLowerCase().charAt(name.length() - 1);
     }
+
     public char firstChar() {
         return name.toLowerCase().charAt(0);
     }

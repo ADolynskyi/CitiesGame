@@ -8,16 +8,18 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
 
 public class HelloApplication extends Application {
-     static FXMLLoader mainWindowLoader;
+    static FXMLLoader mainWindowLoader;
+
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("hello-view.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("Вітаємо!!!");
         Image icon = new Image("city.png");
@@ -28,26 +30,28 @@ public class HelloApplication extends Application {
             event.consume();
             logout(stage);
         });
-        mainWindowLoader= createMainWindowLoader();
+        mainWindowLoader = createMainWindowLoader();
 
-            }
+    }
 
-    public void logout(Stage stage){
+    public void logout(Stage stage) {
         Image icon = new Image("city.png");
-        Alert alert =new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Вихід");
         alert.setHeaderText("Ви хочете покинути гру");
         alert.setContentText("Ви впевнені, що хочете покинути гру");
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
         Optional<ButtonType> buttonType = alert.showAndWait();
-        if(buttonType.isPresent() && buttonType.get()== ButtonType.OK){
+        if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
             stage.close();
         }
     }
-    private FXMLLoader createMainWindowLoader(){
+
+    private FXMLLoader createMainWindowLoader() {
         return new FXMLLoader(Objects.requireNonNull(getClass().getResource("main-window.fxml")));
     }
+
     public static FXMLLoader getMainWindowLoader() {
         return mainWindowLoader;
     }
