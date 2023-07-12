@@ -18,5 +18,5 @@
          <Font size="14.0" />
       </font>
    </Button>
-   <Label fx:id="answerLabel" layoutX="220.0" layoutY="163.0" text="Label" />
+   <Label fx:id="answerLabel" layoutX="220.0" layoutY="163.0"/>
 </AnchorPane>

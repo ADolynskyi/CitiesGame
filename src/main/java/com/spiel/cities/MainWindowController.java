@@ -21,12 +21,12 @@ public class MainWindowController {
     protected void makeMove() {
         if (inputField.getText().equals("")) {
             answerLabel.setText("Введіть місто");
-        } else if (inputField.getText().equals("Здаюсь")) {
+        } else if (inputField.getText().equalsIgnoreCase(Game.SURRENDER_VALUE)) {
             Stage stage = (Stage) inputField.getScene().getWindow();
             greeting(stage, "Комп'ютер виграв", game.getScore());
         } else {
             String turnResult = game.turn(inputField.getText());
-            if (turnResult.equals("city")) {
+            if (turnResult.equals(Game.SUCCESS_VALUE)) {
                 game.setScore(game.getScore() + 1);
                 String cityFromAI = game.turnAI();
                 if (cityFromAI != null) {
@@ -53,7 +53,7 @@ public class MainWindowController {
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
         Optional<ButtonType> buttonType = alert.showAndWait();
-        if(buttonType.isPresent() && buttonType.get()== ButtonType.OK){
+        if (buttonType.isPresent() && buttonType.get() == ButtonType.OK) {
             answerLabel.setText("");
             game = new Game();
         } else {
