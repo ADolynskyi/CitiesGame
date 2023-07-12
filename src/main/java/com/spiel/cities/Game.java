@@ -20,31 +20,30 @@ public class Game {
                 if (currentCity == null) {
                     dataSet.use(value);
                     currentCity = new City(value);
+                    currentCity.removeInappropriateEnding();
                     return SUCCESS_VALUE;
                 } else {
                     if (currentCity.lastChar() == value.toLowerCase().charAt(0)) {
                         dataSet.use(value);
                         currentCity = new City(value);
+                        currentCity.removeInappropriateEnding();
                         return SUCCESS_VALUE;
                     } else {
-
                         return "Місто не відповідає умові гри";
                     }
                 }
             } else {
-
                 return "Місто вже використовувалось";
             }
         } else {
-
             return "А таке місто точно існує? Я його не знаю";
         }
-
     }
 
     public String turnAI() {
         char lastChar = currentCity.lastChar();
         currentCity = dataSet.findAITurn(lastChar);
+        currentCity.removeInappropriateEnding();
         if (currentCity != null) {
             return currentCity.toString();
         } else {
