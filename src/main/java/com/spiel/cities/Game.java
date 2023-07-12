@@ -23,6 +23,7 @@ public class Game {
                     currentCity.removeInappropriateEnding();
                     return SUCCESS_VALUE;
                 } else {
+                    currentCity.removeInappropriateEnding();
                     if (currentCity.lastChar() == value.toLowerCase().charAt(0)) {
                         dataSet.use(value);
                         currentCity = new City(value);
@@ -43,7 +44,6 @@ public class Game {
     public String turnAI() {
         char lastChar = currentCity.lastChar();
         currentCity = dataSet.findAITurn(lastChar);
-        currentCity.removeInappropriateEnding();
         if (currentCity != null) {
             return currentCity.toString();
         } else {
