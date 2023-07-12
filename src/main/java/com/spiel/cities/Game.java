@@ -66,7 +66,6 @@ public class Game {
             int c;
             while ((c = reader.read()) != -1) {
                 if (c == 13) {
-                    continue;
                 } else if (c == 10) {
                     City city = new City(word.toString());
                     dataSet.add(city);
@@ -74,7 +73,6 @@ public class Game {
                 } else {
                     word.append((char) c);
                 }
-
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
