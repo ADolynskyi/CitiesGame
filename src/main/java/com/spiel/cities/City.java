@@ -1,10 +1,19 @@
 package com.spiel.cities;
 
 public class City {
+    private static final String INAPPROPRIATE_ENDING = "иь";
     private final String name;
 
     public City(String name) {
+        name = removeInappropriateEnding(name);
         this.name = name;
+    }
+
+    private String removeInappropriateEnding(String value) {
+        while (INAPPROPRIATE_ENDING.contains(value.toLowerCase().substring(value.length() - 1))) {
+            value = value.substring(0, value.length() - 1);
+        }
+        return value;
     }
 
     @Override

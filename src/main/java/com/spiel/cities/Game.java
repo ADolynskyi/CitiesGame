@@ -65,7 +65,6 @@ public class Game {
             StringBuilder word = new StringBuilder();
             int c;
             while ((c = reader.read()) != -1) {
-                //System.out.println((char)c);
                 if (c == 13) {
                     continue;
                 } else if (c == 10) {
