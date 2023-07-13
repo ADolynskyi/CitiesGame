@@ -18,5 +18,9 @@
          <Font size="14.0" />
       </font>
    </Button>
-   <Label fx:id="answerLabel" layoutX="220.0" layoutY="163.0"/>
+   <Label fx:id="answerLabel" layoutX="307.0" layoutY="163.0" prefHeight="20.0" prefWidth="181.0">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+   <Label layoutX="236.0" layoutY="164.0" text="Комп'ютер:" />
 </AnchorPane>
