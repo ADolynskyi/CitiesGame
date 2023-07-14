@@ -23,4 +23,9 @@
          <Font name="System Bold" size="14.0" />
       </font></Label>
    <Label layoutX="236.0" layoutY="164.0" text="Комп'ютер:" />
+   <Label fx:id="infoLabel" layoutX="64.0" layoutY="224.0" prefHeight="26.0" prefWidth="370.0" textAlignment="CENTER">
+      <font>
+         <Font size="17.0" />
+      </font>
+   </Label>
 </AnchorPane>

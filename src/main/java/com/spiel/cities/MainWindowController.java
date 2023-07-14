@@ -14,13 +14,15 @@ public class MainWindowController {
     @FXML
     private Label answerLabel;
     @FXML
+    private Label infoLabel;
+    @FXML
     private TextField inputField;
     private Game game = new Game();
 
     @FXML
     protected void makeMove() {
         if (inputField.getText().equals("")) {
-            answerLabel.setText("Введіть місто");
+            infoLabel.setText("Введіть місто");
         } else if (inputField.getText().equalsIgnoreCase(Game.SURRENDER_VALUE)) {
             Stage stage = (Stage) inputField.getScene().getWindow();
             greeting(stage, "Комп'ютер виграв", game.getScore());
@@ -32,12 +34,13 @@ public class MainWindowController {
                 if (cityFromAI != null) {
                     answerLabel.setText(cityFromAI);
                     inputField.setText("");
+                    infoLabel.setText("");
                 } else {
                     Stage stage = (Stage) inputField.getScene().getWindow();
                     greeting(stage, "Ви виграли", game.getScore());
                 }
             } else {
-                answerLabel.setText(turnResult);
+                infoLabel.setText(turnResult);
             }
         }
         inputField.setText("");
