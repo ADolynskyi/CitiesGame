@@ -51,7 +51,15 @@ public class MainWindowController {
         Image icon = new Image("city.png");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Чудова гра");
-        alert.setHeaderText(result + ", з рахунком в " + score + " бали(ів)");
+        String rightPluralForm;
+        if(score%10==1){
+            rightPluralForm=" бал";
+        } else if (score%10==2 || score%10==3||score%10==4 ) {
+            rightPluralForm=" бали";
+        }else {
+            rightPluralForm=" балів";
+        }
+        alert.setHeaderText(result + ", з рахунком в " + score + rightPluralForm);
         alert.setContentText("Бажаєте зіграти ще?");
         Stage dialogStage = (Stage) alert.getDialogPane().getScene().getWindow();
         dialogStage.getIcons().add(icon);
