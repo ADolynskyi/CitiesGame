@@ -48,16 +48,17 @@ public class MainWindowController {
     }
 
     public void greeting(Stage stage, String result, int score) {
+        infoLabel.setText("");
         Image icon = new Image("city.png");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Чудова гра");
         String rightPluralForm;
-        if(score%10==1){
-            rightPluralForm=" бал";
-        } else if (score%10==2 || score%10==3||score%10==4 ) {
-            rightPluralForm=" бали";
-        }else {
-            rightPluralForm=" балів";
+        if (score % 10 == 1) {
+            rightPluralForm = " бал";
+        } else if (score % 10 == 2 || score % 10 == 3 || score % 10 == 4) {
+            rightPluralForm = " бали";
+        } else {
+            rightPluralForm = " балів";
         }
         alert.setHeaderText(result + ", з рахунком в " + score + rightPluralForm);
         alert.setContentText("Бажаєте зіграти ще?");
@@ -70,5 +71,12 @@ public class MainWindowController {
         } else {
             stage.close();
         }
+
+    }
+
+    @FXML
+    public void giveUp() {
+        Stage stage = (Stage) inputField.getScene().getWindow();
+        greeting(stage, "Комп'ютер виграв", game.getScore());
     }
 }
