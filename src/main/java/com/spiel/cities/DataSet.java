@@ -23,7 +23,7 @@ public class DataSet {
         citiesUsed.put(new City(value), true);
     }
 
-    public City findAITurn(char c) {
+    public City findAITurn(char c, boolean isAITurn) {
         AtomicBoolean found = new AtomicBoolean(false);
         AtomicReference<City> city = new AtomicReference<>();
         citiesUsed.forEach((key, used) -> {
@@ -33,10 +33,11 @@ public class DataSet {
             }
         });
         if (found.get()) {
-            citiesUsed.put(city.get(), true);
+            citiesUsed.put(city.get(), isAITurn);
             return city.get();
         } else {
             return null;
         }
     }
+
 }

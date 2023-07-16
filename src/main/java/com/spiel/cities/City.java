@@ -3,7 +3,6 @@ package com.spiel.cities;
 public class City {
     private static final String INAPPROPRIATE_ENDING = "иь";
     private String name;
-
     public City(String name) {
         this.name = name;
     }

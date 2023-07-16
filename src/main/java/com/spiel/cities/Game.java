@@ -8,11 +8,16 @@ public class Game {
     public static final String SURRENDER_VALUE = "Здаюсь";
     private final DataSet dataSet = new DataSet();
     private int score = 0;
+
+
+
+    private  int hintScore=0;
     private City currentCity = null;
 
     public Game() {
         readNamesToSet(dataSet);
     }
+
 
     public String turn(String value) {
         if (dataSet.contains(value)) {
@@ -43,16 +48,34 @@ public class Game {
 
     public String turnAI() {
         char lastChar = currentCity.lastChar();
-        currentCity = dataSet.findAITurn(lastChar);
+        currentCity = dataSet.findAITurn(lastChar, true);
         if (currentCity != null) {
             return currentCity.toString();
         } else {
             return null;
         }
     }
+    public String hintForUser(){
+        currentCity.removeInappropriateEnding();
+        char lastChar = currentCity.lastChar();
+         City city;
+         city = dataSet.findAITurn(lastChar, false);
+        if (city != null) {
+            return city.toString();
+        } else {
+            return "Міст з такою літерою не залишилось(:";
+        }
+
+    }
 
     public int getScore() {
         return score;
+    }
+    public int getHintScore() {
+        return hintScore;
+    }
+    public void setHintScore(int hintScore){
+        this.hintScore=hintScore;
     }
 
     public void setScore(int score) {
@@ -78,5 +101,6 @@ public class Game {
             System.out.println(e.getMessage());
         }
     }
+
 }
 
